@@ -1,0 +1,10 @@
+spring:
+  data:
+    mongodb:
+      database: planplanet
+      uri: mongodb://localhost:27017
+
+
+security:
+    user:
+        password: password

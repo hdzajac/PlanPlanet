@@ -1,0 +1,89 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 center-block">
+            <div>
+                <button ng-click="vm.go('/plans')"
+                        class="btn btn-primary pull-left">Back
+                </button>
+            </div>
+            <div>
+                <button ng-click="vm.save()" class="btn btn-primary pull-right">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!--white space-->
+    <ol style="visibility:hidden;"></ol>
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Destination </label>
+                        <div class="col-md-10"><span class="form-control-static" ng-bind="vm.params.destination"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label">From </label>
+                        <div class="col-md-4">
+                            <span class="form-control-static" ng-bind="vm.params.dateFrom"></span>
+                        </div>
+                        <label class="col-md-2 form-control-label">To </label>
+                        <div class="col-md-4">
+                            <span class="form-control-static" ng-bind="vm.params.dateTo"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-md-4 form-control-label">Author </label>
+                        <div class="col-md-8"><a href="url">Contact</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <ui-gmap-google-map center='vm.map.center' zoom='vm.map.zoom'>
+                <ui-gmap-markers models='vm.markers' coords="'self'"></ui-gmap-markers>
+                <ui-gmap-polyline ng-repeat="p in vm.polylines" path="p.path" stroke="p.stroke" visible='p.visible' icons='p.icons'></ui-gmap-polyline>
+            </ui-gmap-google-map>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-inline text-center">
+                <li ng-repeat="day in vm.generatedPlan.days" class="list-group-item">
+                    <a ng-click="vm.showAttractions(day.index)">Day <span ng-bind="day.index"></span></a>
+                </li>
+            </ul>
+            <div>
+                <ul class="row">
+                    <li ng-repeat="day in vm.generatedPlan.days | filter: vm.query" class="list-unstyled">
+                        <div>
+                            <ul>
+                                <li ng-repeat="attr in day.attractions" class=" list-group-item">
+                                    <span ng-bind="attr.name"></span>
+                                    <span>
+                                        <button ng-click="vm.showDetails($index)"
+                                                class="btn btn-default btn-xs pull-right">Details</button>
+                                    </span>
+                                    <span>
+                                        <button ng-click="vm.removeAttraction(day.index, $index)"
+                                                class="btn btn-default btn-xs pull-right">Remove</button>
+                                    </span>
+                                    <p ng-show="vm.details[$index]">
+                                        <span ng-bind="attr.details"></span>
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

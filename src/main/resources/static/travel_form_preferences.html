@@ -1,0 +1,15 @@
+<form>
+    <div>
+        <formly-form class="col-xs-6" model="vm.preferences" fields="vm.preferencesFields"
+                     form="vm.preferencesForm">
+        </formly-form>
+        <formly-form class="col-xs-6" model="vm.preferences2" fields="vm.preferencesFields2"
+                     form="vm.preferencesForm2">
+        </formly-form>
+        <button ng-click="vm.submit()" type="submit" class="btn btn-primary"
+        ng-disabled="vm.preferencesForm2.$invalid"
+        >
+        Submit
+        </button>
+    </div>
+</form>

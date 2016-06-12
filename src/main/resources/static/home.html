@@ -1,0 +1,8 @@
+<form novalidate>
+    <formly-form model="vm.travel" fields="vm.travelFields" form="vm.travelForm">
+        <button ng-click="vm.next()" type="submit" class="btn btn-primary"
+        ng-disabled="vm.travelForm.$invalid"
+        >Take me there!
+        </button>
+    </formly-form>
+</form>

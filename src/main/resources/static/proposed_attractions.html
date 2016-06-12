@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h3 class="modal-title">Pick a replacement</h3>
+</div>
+<div class="modal-body">
+    <div data-ng-repeat="attraction in suggestions">
+        <input type="radio" name="choice" value="false" ng-click="setChoice($index)"/>
+        {{attraction.name}}
+        <br>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

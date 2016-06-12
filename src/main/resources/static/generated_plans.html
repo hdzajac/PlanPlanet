@@ -1,0 +1,31 @@
+<div>
+    <!--<h2>{{vm.travel.destination}}</h2>-->
+    <!--<div>{{vm.travel.dateFrom | date : "shortDate"}}</div>-->
+    <!--<div>{{vm.travel.dateTo | date : "shortDate"}}</div>-->
+    <div class="row">
+        <div class="col-sm-offset-5 col-sm-2 text-center">
+            <button class="btn btn-primary" ng-click="vm.go('/step2')">Preferences</button>
+        </div>
+    </div>
+
+    <div>
+        <h3>Generated plans</h3>
+        <ul class="row" >
+            <li ng-repeat="day in vm.generatedPlan.days" class="list-group-item">
+                <div>
+                    <span>Day </span>
+                    <span ng-bind="day.index"></span>
+                    <span>
+                        <button ng-click="vm.go('/planDetails/'+day.index)" class="btn btn-primary pull-right">See details</button>
+                    </span>
+                    <ul class="list-group" >
+                        <li ng-repeat="attr in day.attractions" class=" list-unstyled">
+                            <span ng-bind="attr.name"></span>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <h3>Ready plans</h3>
+</div>
