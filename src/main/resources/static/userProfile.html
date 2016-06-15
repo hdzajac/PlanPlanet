@@ -4,28 +4,43 @@
 </head>
 
 <body>
-        <div class="gallery"><img src="images/avatar.png" alt="default avatar"></div>
-        <h1>user</h1>
+<div class="gallery"><img src="images/avatar.png" alt="default avatar"></div>
+<h1><span ng-bind="vm.login"></span></h1>
 
-        <section class="tab" ng-controller="profileCtrl as tab">
-            <ul class="nav nav-pills">
-                <li ng-class="{ active: tab.isSet(1) }">
-                    <a href ng-click="tab.setTab(1)">Informacje</a></li>
-                <li ng-class="{ active: tab.isSet(2) }">
-                    <a href ng-click="tab.setTab(2)">Plany</a></li>
-                <li ng-class="{ active: tab.isSet(3) }">
-                    <a href ng-click="tab.setTab(3)">Inne</a></li>
-            </ul>
-            <div ng-show="tab.isSet(1)">
-                <blockquote>//info</blockquote>
-            </div>
-            <div ng-show="tab.isSet(2)">
-                <blockquote>//plany</blockquote>
-            </div>
-            <div ng-show="tab.isSet(3)">
-                <blockquote>//inne</blockquote>
-            </div>
-        </section>
+<section class="tab" ng-controller="profileCtrl as tab">
+    <ul class="nav nav-pills">
+        <li ng-class="{ active: tab.isSet(1) }">
+            <a href ng-click="tab.setTab(1)">Informacje</a></li>
+        <li ng-class="{ active: tab.isSet(2) }">
+            <a href ng-click="tab.setTab(2)">Plany</a></li>
+        <li ng-class="{ active: tab.isSet(3) }">
+            <a href ng-click="tab.setTab(3)">Inne</a></li>
+    </ul>
+    <div ng-show="tab.isSet(1)">
+        <blockquote>//info</blockquote>
+    </div>
+    <div ng-show="tab.isSet(2)" class="col-md-6">
+        <div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>City</th>
+                    <th>Days</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="plan in vm.plans">
+                    <td ng-bind="plan.city"></td>
+                    <td ng-bind="plan.days.length"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div ng-show="tab.isSet(3)">
+        <blockquote>//inne</blockquote>
+    </div>
+</section>
 
 
 <script src="js/controllers/profile.controller.js"></script>

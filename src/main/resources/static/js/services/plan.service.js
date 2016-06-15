@@ -29,6 +29,7 @@
         this.preferences2 = {};
         this.dirty = true;
         this.cachedPlan = {};
+        this.savePlan = savePlan;
 
         this.getSuggestions = function (dayIndex, attractionIndex) {
             var deferred = $q.defer();
@@ -125,6 +126,18 @@
 
         this.deleteAttraction = function(dayIndex, attractionIndex) {
             this.cachedPlan.days[dayIndex - 1].attractions.splice(attractionIndex, 1);
+        }
+        
+        function savePlan(plan) {
+            console.log(plan);
+            this.cachedPlan.plan.city = this.travel.destination;
+            this.cachedPlan.plan.author = plan.author;
+            $http.post("/api/saveplan", this.cachedPlan)
+                .then(function (response) {
+                    if (response){
+                        console.log("saved");
+                    }
+                })
         }
     }
 })();

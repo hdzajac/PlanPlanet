@@ -1,14 +1,13 @@
 <!doctype html>
 <html>
 <head>
-    <title>Hello AngularJS</title>
+    <title>PlanPlanet</title>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="node_modules/angular-loading-bar/src/loading-bar.css">
-    <!--<style type="text/css">-->
-        <!--.mynavbar {-->
-            <!--text-align:center;-->
-            <!--float:none;-->
-        <!--}-->
+    <!--.mynavbar {-->
+    <!--text-align:center;-->
+    <!--float:none;-->
+    <!--}-->
     <!--</style>-->
 </head>
 
@@ -22,7 +21,7 @@
     </form>
     <ul class="nav navbar-nav navbar-right" role="tablist">
         <li ng-class="{active:vm.tab('home')}" ng-click="vm.clear()"><a href="#/">New plan</a></li>
-        <li ng-show="vm.authenticated()"><a href="#/profil" ng-class="{active:vm.tab('userProfileCtrl')}">Profile</a></li>
+        <li ng-show="vm.authenticated()" ng-class="{active:vm.tab('profileCtrl')}"><a href="#/profil">Profile</a></li>
         <li ng-show="!vm.authenticated()" ng-class="{active:vm.tab('navigation')}"><a href="#/login">Login</a></li>
         <li ng-show="vm.authenticated()"><a href="" ng-click="vm.logout()">Logout</a></li>
     </ul>
@@ -42,7 +41,8 @@
 <script src="node_modules/angular-google-maps/angular-google-maps.js?key=AIzaSyDOkRHIFSypUwmCZpaPk8YwE3WSaGRHMvg"></script>
 <script src="node_modules/angular-google-maps/lodash.js"></script>
 <script src="node_modules/angular-google-maps/angular-simple-logger.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOkRHIFSypUwmCZpaPk8YwE3WSaGRHMvg" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOkRHIFSypUwmCZpaPk8YwE3WSaGRHMvg"
+        type="text/javascript"></script>
 <script src="node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
 <script src="js/app.js"></script>
 <script src="js/factories/preferences.factory.js"></script>
@@ -58,6 +58,7 @@
 <script src="js/controllers/plans.controller.js"></script>
 <script src="js/controllers/hello.controller.js"></script>
 <script src="js/controllers/register.controller.js"></script>
+<script src="js/controllers/profile.controller.js"></script>
 <script src="js/directives/match.directive.js"></script>
 
 <link rel="stylesheet" type="text/css" href="style.css">

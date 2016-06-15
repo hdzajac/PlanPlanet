@@ -1,3 +1,6 @@
+<div class="alert alert-danger" ng-show="vm.error">
+    <span ng-bind="vm.error_message"></span>
+</div>
 <div>
     <form name="form" ng-submit="vm.register()" role="form">
         <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">

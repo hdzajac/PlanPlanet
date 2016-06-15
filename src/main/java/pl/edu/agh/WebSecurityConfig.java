@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/*/**").permitAll()
                 .antMatchers(
 //                        "/index.html", "/home.html", "/login.html",
-        "/", "/*.html","/*.js", "user", "user_login").permitAll()
+        "/", "/*.html","/*.js", "author", "user_login").permitAll()
         .and()
                 .formLogin()
                 .defaultSuccessUrl("/#/home")
@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authentication) throws Exception {
         authentication.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-//        authentication.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+//        authentication.inMemoryAuthentication().withUser("author").password("password").roles("USER");
     }
 
 //    @Bean

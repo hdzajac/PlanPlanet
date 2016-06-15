@@ -69,14 +69,14 @@ public class UserController {
             bindingResult) {
         validator.validate(form, bindingResult);
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(CreateUserResponse.failed(), HttpStatus.OK);
+            return new ResponseEntity<>(CreateUserResponse.failed(bindingResult.getAllErrors().get(0).getDefaultMessage()), HttpStatus.OK);
         }
         try {
             User user = service.create(form);
             return new ResponseEntity<>(CreateUserResponse.success(user), HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
             bindingResult.reject("login.exists", "Login already exists");
-            return new ResponseEntity<>(CreateUserResponse.failed(), HttpStatus.OK);
+            return new ResponseEntity<>(CreateUserResponse.failed("Login already exists"), HttpStatus.OK);
         }
     }
 }

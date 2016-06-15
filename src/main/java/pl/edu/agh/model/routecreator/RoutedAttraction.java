@@ -1,18 +1,25 @@
 package pl.edu.agh.model.routecreator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import pl.edu.agh.model.data.Attraction;
 import pl.edu.agh.model.data.Location;
 import pl.edu.agh.model.data.Route;
 
 import java.time.Duration;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RoutedAttraction {
-    private final Route route;
-    private final long visitTime;
-    private final Attraction attraction;
+    private Route route;
+    @JsonIgnore
+    private long visitTime;
+    private Attraction attraction;
 
     public Location getLocation() {
         return attraction.getLocation();
+    }
+
+    public RoutedAttraction() {
     }
 
     public RoutedAttraction(Attraction attraction, Route route, long visitTime) {
@@ -41,4 +48,15 @@ public class RoutedAttraction {
         return Duration.ofSeconds(visitTime);
     }
 
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    public void setVisitTime(long visitTime) {
+        this.visitTime = visitTime;
+    }
+
+    public void setAttraction(Attraction attraction) {
+        this.attraction = attraction;
+    }
 }
