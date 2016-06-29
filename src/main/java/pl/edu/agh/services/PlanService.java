@@ -11,5 +11,6 @@ public interface PlanService {
     Plan save(Plan plan);
     boolean deleteById(String id);
     Plan findByCity(String city);
+    List<Plan> findByAuthor(String user);
 
 }

@@ -43,4 +43,9 @@ public class PlanServiceImpl implements PlanService{
     public Plan findByCity(String city) {
         return repository.findByCity(city);
     }
+
+    @Override
+    public List<Plan> findByAuthor(String author) {
+        return repository.findByAuthor(author);
+    }
 }

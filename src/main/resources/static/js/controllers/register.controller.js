@@ -17,11 +17,11 @@
             vm.dataLoading = true;
             $http.post("/api/user/create", vm.user)
                 .then(function (response) {
-                    if (response.success) {
-                        vm.dataLoading = false;
+                    if (response.data.created) {
                         $location.path('/login');
                     } else {
-                        vm.dataLoading = false;
+                        vm.error = true;
+                        vm.error_message = response.data.message;
                     }
                 });
         }

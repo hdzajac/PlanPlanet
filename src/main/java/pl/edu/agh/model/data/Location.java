@@ -3,8 +3,11 @@ package pl.edu.agh.model.data;
 import java.util.Objects;
 
 public class Location {
-    private final double latitude;
-    private final double longitude;
+    private double latitude;
+    private double longitude;
+
+    public Location() {
+    }
 
     public Location(double latitude, double longitude) {
         this.latitude = latitude;
@@ -19,6 +22,13 @@ public class Location {
         return longitude;
     }
 
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     @Override
     public String toString() {

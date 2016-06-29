@@ -123,7 +123,8 @@
 
         function save() {
             if (AuthenticationService.isAuthenticated()) {
-                console.log("saved");
+                vm.generatedPlan.author = AuthenticationService.currentUser().login;
+                planService.savePlan(vm.generatedPlan);
             } else {
                 go("/login");
             }

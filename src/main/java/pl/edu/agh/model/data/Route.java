@@ -1,14 +1,21 @@
 package pl.edu.agh.model.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.Duration;
 import java.util.Objects;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Route {
     public static final Route ZERO_LENGTH = new Route(Duration.ZERO.getSeconds(), 0);
     public static final Route UNREACHABLE = new Route(Duration.ofSeconds(Long.MAX_VALUE).getSeconds(), Double.POSITIVE_INFINITY);
 
-    private final long timeToReach;
-    private final double distanceToReach;
+    @JsonIgnore
+    private long timeToReach;
+    private double distanceToReach;
+
+    public Route() {
+    }
 
     public Route(long timeToReach, double distanceToReach) {
         this.timeToReach = timeToReach;
@@ -43,5 +50,13 @@ public class Route {
     @Override
     public int hashCode() {
         return Objects.hash(timeToReach, distanceToReach);
+    }
+
+    public void setTimeToReach(long timeToReach) {
+        this.timeToReach = timeToReach;
+    }
+
+    public void setDistanceToReach(double distanceToReach) {
+        this.distanceToReach = distanceToReach;
     }
 }
